@@ -13,6 +13,7 @@
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
+cmake_minimum_required(VERSION 2.8.11)
 
 #
 # Hint at old root folder (see build_win32/build_win64.bat)
@@ -199,8 +200,7 @@ else()
 endif()
     target_link_libraries(uastack PUBLIC ${OPENSSL_LIBRARIES})
 
-if(WIN32)
-  # Place here the install rule for win32
-elseif(LINUX)
-    install (TARGETS uastack LIBRARY DESTINATION lib)
-endif()
+install(TARGETS uastack
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+
